@@ -1,7 +1,7 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const keys = require("../config/keys");
 const mongoose = require("mongoose");
+const keys = require("../config/keys");
 
 const User = mongoose.model("users");
 
@@ -27,7 +27,7 @@ passport.use(
       const existingUser = await User.findOne({ googleId: profile.id });
       if (existingUser) {
         // We already have a record with the given profile ID
-        done(null, existingUser);
+        return done(null, existingUser);
       } else {
         // We don't have a user record with this ID, make a new record
         const user = await new User({ googleId: profile.id }).save();
