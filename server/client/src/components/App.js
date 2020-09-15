@@ -4,19 +4,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Header from "./Header";
 import Landing from "./Landing";
-// import Dashboard from "./Dashboard";
-// import SurveyNew from "./surveys/SurveyNew";
+import Dashboard from "./Dashboard";
+import SurveyNew from "./surveys/SurveyNew";
+import NotFound from "./NotFound";
 import { fetchUser } from "../actions";
-
-const NoMatchPage = () => {
-  return <h2>404 NOT FOUND</h2>;
-};
-const Dashboard = () => {
-  return <h2>Dashboard</h2>;
-};
-const SurveyNew = () => {
-  return <h2>Survey New</h2>;
-};
 
 class App extends Component {
   componentDidMount() {
@@ -33,7 +24,7 @@ class App extends Component {
               <Route exact path="/" component={Landing} />
               <Route exact path="/surveys" component={Dashboard} />
               <Route exact path="/surveys/new" component={SurveyNew} />
-              <Route component={NoMatchPage} />
+              <Route component={NotFound} />
             </Switch>
           </div>
         </BrowserRouter>
